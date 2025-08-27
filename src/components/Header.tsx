@@ -127,6 +127,7 @@ const [clientUser, setClientUser] = useState<ClientUser | null>(null);
   const handleLogout = async () => {
     try {
       await signOut(auth);
+      localStorage.removeItem('client_user');
       localStorage.removeItem('vendorUser');
       setClientUser(null);
       setIsProfileMenuOpen(false);
