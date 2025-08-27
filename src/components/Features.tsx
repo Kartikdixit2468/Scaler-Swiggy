@@ -1,5 +1,3 @@
-import React from "react";
-
 const Features = () => {
   return (
     <section className="py-16 lg:py-24 reveal-on-scroll bg-white rounded-lg m-4 shadow-xl">

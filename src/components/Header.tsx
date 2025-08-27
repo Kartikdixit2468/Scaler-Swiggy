@@ -1,18 +1,24 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import logo from "../assets/Scaler_swiggy.png";
 import { Link, useNavigate } from "react-router-dom";
-import { User, LogIn, LogOut, X, AlignJustify } from "lucide-react";
+import { User, LogOut, X, AlignJustify } from "lucide-react";
 import { signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from "../../firebase";
 
-// --- Login Modal Component ---
-const LoginModal = ({ isOpen, onClose, onSignIn }) => {
+type LoginModalProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  onSignIn: () => void;
+};
+
+const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose, onSignIn }) => {
+
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center z-50">
       <div className="relative p-8 w-96 mx-auto bg-white rounded-xl shadow-lg">
-        <button className="absolute top-4 right-4 text-gray-500 hover:text-gray-800" onClick={onClose}>
+        <button  aria-label="Close modal" className="absolute top-4 right-4 text-gray-500 hover:text-gray-800" onClick={onClose}>
           <X size={24} />
         </button>
         <h3 className="text-2xl font-bold text-center mb-6 text-gray-900">Sign In</h3>
@@ -28,8 +34,12 @@ const LoginModal = ({ isOpen, onClose, onSignIn }) => {
   );
 };
 
-// --- Participant Alert Modal ---
-const ParticipantAlertModal = ({ isOpen, onClose }) => {
+type ParticipantAlertModalProps = {
+  isOpen: boolean;
+  onClose: () => void;
+};
+
+const ParticipantAlertModal: React.FC<ParticipantAlertModalProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
@@ -52,9 +62,16 @@ const ParticipantAlertModal = ({ isOpen, onClose }) => {
 
 
 const Header = () => {
+interface ClientUser {
+  uid: string;
+  displayName: string | null;
+  email: string | null;
+}
+
+const [clientUser, setClientUser] = useState<ClientUser | null>(null);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
-  const [clientUser, setClientUser] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isParticipantAlertOpen, setIsParticipantAlertOpen] = useState(false); // New state for participant alert
   const navigate = useNavigate();
@@ -68,6 +85,7 @@ const Header = () => {
     
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
+          
         const userDetails = {
           uid: user.uid,
           displayName: user.displayName,
@@ -89,7 +107,7 @@ const Header = () => {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(auth, provider);
       setIsModalOpen(false);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Google Sign-In failed:", error.message);
       if (error.code === 'auth/popup-blocked') {
         alert("The pop-up was blocked by your browser. Please allow pop-ups for this site.");
@@ -113,12 +131,12 @@ const Header = () => {
       setClientUser(null);
       setIsProfileMenuOpen(false);
       navigate('/');
-    } catch (error) {
+    } catch (error: any) {
       console.error("Logout failed:", error.message);
     }
   };
 
-  const handleParticipantClick = (e) => {
+  const handleParticipantClick = (e: any) => {
     // Check if a client user is already logged in
     if (clientUser) {
         e.preventDefault(); // Prevent navigation
@@ -166,6 +184,7 @@ const Header = () => {
               // Profile icon with logout dropdown
               <div className="relative">
                 <button 
+                   aria-label="Close modal"
                   onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)} 
                   className="bg-gray-200 p-2 rounded-full hover:bg-gray-300 transition duration-300"
                 >
@@ -195,6 +214,7 @@ const Header = () => {
             
             {/* Mobile Menu Button */}
             <button
+             aria-label="Close modal"
               id="mobile-menu-button"
               className="lg:hidden text-gray-600 focus:outline-none"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
