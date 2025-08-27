@@ -1,31 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// import { signInWithEmailAndPassword } from "firebase/auth";
-// import { auth } from "../../firebase"; // adjust path if needed
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../firebase"; // your Firestore instance
-
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-
-async function getVendorByEmail(email: string) {
-  //   const q = query(
-  //     collection(db, "data/vendors"),
-  //     where("email", "==", email)
-  //   );
-  
-  const vendorsRef = collection(db, `artifacts/default-app-id/public/data/vendors`); // const vendorsRef = collection(db, "data", "public", "vendors"); // 👈 check your actual parent doc name!
-  const querySnapshot = await getDocs(vendorsRef);
-  console.log("yele bhai -> ", querySnapshot);
-
-  //   const querySnapshot = await getDocs(q);
-
-  querySnapshot.forEach((doc) => {
-    console.log("Here!");
-    console.log(doc.id, " => ", doc.data());
-    return doc;
-  });
-}
 
 const VendorLogin: React.FC = () => {
   const navigate = useNavigate();
