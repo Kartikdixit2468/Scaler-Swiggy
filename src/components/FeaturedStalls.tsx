@@ -12,20 +12,22 @@ const FeaturedStalls = () => {
                     {/* Stall Card 1 */}
                     <div className="bg-gray-100 p-6 rounded-xl shadow-md transform hover:scale-105 transition-transform duration-300">
                         <img src="https://placehold.co/400x250/E5E7EB/6B7280?text=Maggie+Point" alt="Maggie Point" className="w-full rounded-lg mb-4" />
-                        <h3 className="text-xl font-bold mb-2">The Maggie Hub</h3>
-                        <p className="text-gray-600">The best Maggie on campus. Hot and spicy!</p>
+                        {/* <h3 className="text-xl font-bold mb-2">The Maggie Hub</h3> */}
+                        {/* <p className="text-gray-600">The best Maggie on campus. Hot and spicy!</p> */}
+                        <h3 className="text-xl font-bold mb-2">Comming Soon</h3>
+                        <p className="text-gray-600">The best Recipes on campus. Hot and spicy!</p>
                     </div>
                     {/* Stall Card 2 */}
                     <div className="bg-gray-100 p-6 rounded-xl shadow-md transform hover:scale-105 transition-transform duration-300">
                         <img src="https://placehold.co/400x250/E5E7EB/6B7280?text=Burger+Joint" alt="Burger Joint" className="w-full rounded-lg mb-4" />
-                        <h3 className="text-xl font-bold mb-2">The Burger Stop</h3>
-                        <p className="text-gray-600">Classic burgers and fries. A student favorite.</p>
+                        <h3 className="text-xl font-bold mb-2">Comming Soon</h3>
+                        <p className="text-gray-600">The best Recipes on campus. Hot and spicy!</p>
                     </div>
                     {/* Stall Card 3 */}
                     <div className="bg-gray-100 p-6 rounded-xl shadow-md transform hover:scale-105 transition-transform duration-300">
                         <img src="https://placehold.co/400x250/E5E7EB/6B7280?text=Juice+Corner" alt="Juice Corner" className="w-full rounded-lg mb-4" />
-                        <h3 className="text-xl font-bold mb-2">Juice & Shakes</h3>
-                        <p className="text-gray-600">Fresh fruit juices and thick shakes for a quick energy boost.</p>
+                        <h3 className="text-xl font-bold mb-2">Comming Soon</h3>
+                        <p className="text-gray-600">The best Recipes on campus. Hot and spicy!</p>                        <p className="text-gray-600">Fresh fruit juices and thick shakes for a quick energy boost.</p>
                     </div>
                 </div>
             </div>
