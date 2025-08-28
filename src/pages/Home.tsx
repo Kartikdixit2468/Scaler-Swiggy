@@ -119,10 +119,10 @@ const Home = () => {
           {/* Floating food items background */}
           <div className="absolute inset-0 z-0">
             {/* Top floating elements */}
-            <div className="absolute top-10 left-[20%] p-4 rounded-full bg-[#f7a048]/20 animate-float animate-delay-1 -rotate-12">
+            <div className="absolute top-10 left-[20%] p-4 rounded-full bg-[#f7a048]/20 animate-float animate-delay-1 -rotate-12 hidden sm:block">
               <span className="text-4xl lg:text-5xl">🍔</span>
             </div>
-            <div className="absolute top-12 left-[50%] p-4 rounded-full bg-[#ff5e00]/20 animate-float animate-delay-2 rotate-45">
+            <div className="absolute top-12 left-[50%] p-4 rounded-full bg-[#ff5e00]/20 animate-float animate-delay-2 rotate-45 hidden sm:block">
               <span className="text-4xl lg:text-5xl">🍜</span>
             </div>
             <div className="absolute top-16 left-[30%] p-4 rounded-full bg-[#f7a048]/20 animate-float animate-delay-3 -rotate-30 hidden sm:block">
@@ -205,7 +205,7 @@ const Home = () => {
                 </svg>
               </div>
               <h3 className="text-2xl font-bold text-[#2c3e50] mb-2">
-                Skip The Canteen Queue
+                Skip The Stall Queue
               </h3>
               <p className="text-gray-600">
                 No more waiting in long lines. Order your favorite food and get
