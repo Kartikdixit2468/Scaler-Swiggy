@@ -166,6 +166,7 @@ export default function VendorRegistration() {
 
       setMessage("Vendor registered successfully! Thank you.");
       // ✅ navigate to login
+      localStorage.setItem("vendorUser", JSON.stringify(formData));
       navigate("/dashboard", { replace: true });
       setFormData({
         stallName: "",
