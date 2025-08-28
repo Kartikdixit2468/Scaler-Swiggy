@@ -4,8 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 import { collection, getDocs } from 'firebase/firestore';
-import { signInAnonymously } from 'firebase/auth';
-import { db, auth } from '../../firebase'; // Centralized Firebase services
+import { db } from '../../firebase'; // Centralized Firebase services
 
 // These are global variables provided by the Canvas environment.
 const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
@@ -68,7 +67,6 @@ export default function Stalls() {
   useEffect(() => {
     const fetchStalls = async () => {
       try {
-        await signInAnonymously(auth);
 
         const vendorsCollectionRef = collection(db, `artifacts/${appId}/public/data/vendors`);
         const querySnapshot = await getDocs(vendorsCollectionRef);
